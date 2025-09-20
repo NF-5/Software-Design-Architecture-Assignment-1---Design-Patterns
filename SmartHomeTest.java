@@ -4,7 +4,10 @@ interface smartLock
     void specs();
 }
 
-//Place holder for lightbulb interface  
+interface lightBulb
+{
+    void powerUsage();
+}
 
 //Brand A products
 class BrandALock implements smartLock 
@@ -22,7 +25,13 @@ class BrandALock implements smartLock
     }
 }
 
-//Place holder for Brand A lightbulb
+class BrandABulb implements lightBulb
+{
+    @override
+    public void powerUsage()
+    {
+        System.out.println("The power usage from the bulb from brand A is " + aPower)    
+    }
 
 //Brand B products
 class BrandBLock implements smartLock 
