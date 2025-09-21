@@ -1,7 +1,6 @@
 interface smartLock
 {
     void batteryConsumption();
-    void specs();
 }
 
 interface lightBulb
@@ -12,17 +11,19 @@ interface lightBulb
 //Brand A products
 class BrandALock implements smartLock
 {
+    int aBattery;
+
+    public BrandALock(int aBattery) 
+    {
+        this.aBattery = aBattery;
+    }
+
     @Override
     public void batteryConsumption()
     {
-
+        System.out.println("The battery consumption from brand A is " + aBattery + "W.");
     }
 
-    @Override
-    public void specs()
-    {
-
-    }
 }
 
 class BrandABulb implements lightBulb
@@ -42,17 +43,18 @@ class BrandABulb implements lightBulb
 //Brand B products
 class BrandBLock implements smartLock
 {
+    int bBattery;
+    public BrandBLock(int bBattery) 
+    {
+        this.bBattery = bBattery;
+    }
+
     @Override
     public void batteryConsumption()
     {
-
+        System.out.println("The battery consumption from the lock from brand B is " + bBattery + "W.");
     }
 
-    @Override
-    public void specs()
-    {
-
-    }
 }
 
 class BrandBBulb implements lightBulb
@@ -73,42 +75,39 @@ class BrandBBulb implements lightBulb
 //Abstract Factory Interface
 interface SmartHomeFactory
 {
-    smartLock createLock();
-    lightBulb createBulb();
+    smartLock createLock(int battery);
+    lightBulb createBulb(int power);
 }
+
 //Factory for Brand A
 class BrandAFactory implements SmartHomeFactory
 {
-    private int aPower;
-
     @Override
-    public smartLock createLock()
+    public smartLock createLock(int battery)
     {
-        return new BrandALock();
+        return new BrandALock(battery);
     }
 
     @Override
-    public lightBulb createBulb()
+    public lightBulb createBulb(int power)
     {
-        return new BrandABulb(aPower);
+        return new BrandABulb(power);
     }
 }
 
 //Factory for Brand B
 class BrandBFactory implements SmartHomeFactory
 {
-    private int bPower;
-
     @Override
-    public smartLock createLock()
+    public smartLock createLock(int battery)
     {
-        return new BrandBLock();
+        return new BrandBLock(battery);
     }
 
     @Override
-    public lightBulb createBulb()
+    public lightBulb createBulb(int power)
     {
-        return new BrandBBulb(bPower);
+        return new BrandBBulb(power);
     }
 }
 
@@ -119,11 +118,23 @@ public class SmartHomeTest {
         int aPower = 50;
         int bPower = 70;
 
-        BrandABulb bulb1 = new BrandABulb(aPower);
+        int aBattery = 20;
+        int bBattery = 30;
+
+        SmartHomeFactory brandAFactory = new BrandAFactory();
+        SmartHomeFactory brandBFactory = new BrandBFactory();
+
+        lightBulb bulb1 = brandAFactory.createBulb(aPower);
         bulb1.powerUsage();
 
-        BrandBBulb bulb2 = new BrandBBulb(bPower);
+        lightBulb bulb2 = brandBFactory.createBulb(bPower);
         bulb2.powerUsage();
+
+        smartLock lock1 = brandAFactory.createLock(aBattery);
+        lock1.batteryConsumption();
+
+        smartLock lock2 = brandBFactory.createLock(bBattery);
+        lock2.batteryConsumption();
     }
 
 }
