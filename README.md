@@ -28,3 +28,7 @@ SmartHomeTest
  - Test driver, calls methods to create a bulb from brand A and a lock from brand B, and returns their power usage/battery consumption
 
 
+<img width="1321" height="438" alt="Screenshot 2025-09-22 023359" src="https://github.com/user-attachments/assets/8d4d7185-7162-4cf6-b7b7-188c41c65c0b" />
+
+Please refer to DesignAssignment1.pdf for full screendump
+
