@@ -27,5 +27,4 @@ class BrandBFactory
 SmartHomeTest
  - Test driver, calls methods to create a bulb from brand A and a lock from brand B, and returns their power usage/battery consumption
 
-Screendump
-file:///C:/Users/chris/Downloads/DesignAssignment1.pdf
+
