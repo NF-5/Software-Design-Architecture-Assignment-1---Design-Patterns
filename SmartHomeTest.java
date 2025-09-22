@@ -127,12 +127,6 @@ public class SmartHomeTest {
         lightBulb bulb1 = brandAFactory.createBulb(aPower);
         bulb1.powerUsage();
 
-        lightBulb bulb2 = brandBFactory.createBulb(bPower);
-        bulb2.powerUsage();
-
-        smartLock lock1 = brandAFactory.createLock(aBattery);
-        lock1.batteryConsumption();
-
         smartLock lock2 = brandBFactory.createLock(bBattery);
         lock2.batteryConsumption();
     }
