@@ -21,7 +21,7 @@ class BrandALock implements smartLock
     @Override
     public void batteryConsumption()
     {
-        System.out.println("The battery consumption from brand A is " + aBattery + "W.");
+        System.out.println("The battery consumption from the lock from brand A is " + aBattery + "W.");
     }
 
 }
