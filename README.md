@@ -1,6 +1,6 @@
 ﻿# Software-Design-Architecture-Assignment-1---Design-Patterns
 
-Developed by Nicholas Furtado(100908880), Geraline Nazareth Chavez Reyes(100890130), Christopher Lui
+Developed by Nicholas Furtado(100908880), Geraline Nazareth Chavez Reyes(100890130), Christopher Lui (100912564)
 
 The following assignment demonstrates an Abstract Factory design pattern through the modeling of locks and light bulbs (Smart home devices) from two different brands, A and B.
 
@@ -37,6 +37,7 @@ SmartHomeTest
 
 
 <img width="1321" height="438" alt="Screenshot 2025-09-22 023359" src="https://github.com/user-attachments/assets/8d4d7185-7162-4cf6-b7b7-188c41c65c0b" />
+
 
 
 
