@@ -1,83 +1,140 @@
-interface smartLock 
+interface smartLock
 {
     void batteryConsumption();
-    void specs();
 }
 
-//Place holder for lightbulb interface  
+interface lightBulb
+{
+    void powerUsage();
+}
 
 //Brand A products
-class BrandALock implements smartLock 
+class BrandALock implements smartLock
 {
-    @Override
-    public void batteryConsumption() 
-    {
+    int aBattery;
 
+    public BrandALock(int aBattery) 
+    {
+        this.aBattery = aBattery;
     }
 
     @Override
-    public void specs() 
+    public void batteryConsumption()
     {
-       
+        System.out.println("The battery consumption from brand A is " + aBattery + "W.");
     }
+
 }
 
-//Place holder for Brand A lightbulb
+class BrandABulb implements lightBulb
+{
+    int aPower;
 
+    public BrandABulb(int aPower) {
+        this.aPower = aPower;
+    }
+
+    @Override
+    public void powerUsage()
+    {
+        System.out.println("The power usage from the bulb from brand A is " + aPower + "W.");
+    }
+}
 //Brand B products
-class BrandBLock implements smartLock 
+class BrandBLock implements smartLock
 {
-    @Override
-    public void batteryConsumption() 
+    int bBattery;
+    public BrandBLock(int bBattery) 
     {
-    
+        this.bBattery = bBattery;
     }
 
     @Override
-    public void specs() 
+    public void batteryConsumption()
     {
-       
+        System.out.println("The battery consumption from the lock from brand B is " + bBattery + "W.");
     }
+
 }
 
-//Place holder for Brand B lightbulb
+class BrandBBulb implements lightBulb
+{
+    int bPower;
+
+    public BrandBBulb(int bPower) {
+        this.bPower = bPower;
+    }
+
+    @Override
+    public void powerUsage()
+    {
+        System.out.println("The power usage from the bulb from brand B is " + bPower + "W.");
+    }
+}
 
 //Abstract Factory Interface
-interface SmartHomeFactory 
+interface SmartHomeFactory
 {
-    smartLock createLock();
-    //Place holder for lightbulb creation method
-}   
+    smartLock createLock(int battery);
+    lightBulb createBulb(int power);
+}
+
 //Factory for Brand A
-class BrandAFactory implements SmartHomeFactory 
+class BrandAFactory implements SmartHomeFactory
 {
     @Override
-    public smartLock createLock() 
+    public smartLock createLock(int battery)
     {
-        return new BrandALock();
+        return new BrandALock(battery);
     }
 
-    //Place holder for lightbulb creation method
+    @Override
+    public lightBulb createBulb(int power)
+    {
+        return new BrandABulb(power);
+    }
 }
 
 //Factory for Brand B
-class BrandBFactory implements SmartHomeFactory 
+class BrandBFactory implements SmartHomeFactory
 {
     @Override
-    public smartLock createLock() 
+    public smartLock createLock(int battery)
     {
-        return new BrandBLock();
+        return new BrandBLock(battery);
     }
 
-    //Place holder for lightbulb creation method
+    @Override
+    public lightBulb createBulb(int power)
+    {
+        return new BrandBBulb(power);
+    }
 }
 
 //Test Driver for Smart Home System
 public class SmartHomeTest {
     public static void main(String[] args) {
-        //Place holder for lock
-        
-        //Place holder for lightbulb 
+
+        int aPower = 50;
+        int bPower = 70;
+
+        int aBattery = 20;
+        int bBattery = 30;
+
+        SmartHomeFactory brandAFactory = new BrandAFactory();
+        SmartHomeFactory brandBFactory = new BrandBFactory();
+
+        lightBulb bulb1 = brandAFactory.createBulb(aPower);
+        bulb1.powerUsage();
+
+        lightBulb bulb2 = brandBFactory.createBulb(bPower);
+        bulb2.powerUsage();
+
+        smartLock lock1 = brandAFactory.createLock(aBattery);
+        lock1.batteryConsumption();
+
+        smartLock lock2 = brandBFactory.createLock(bBattery);
+        lock2.batteryConsumption();
     }
-    
+
 }
